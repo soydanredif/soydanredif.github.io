@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Soydan Redif | Polynomial GEVD for Convolutive Broadband Blind Source Separation</title>
+
+  <meta name="description"
+        content="Research overview by Soydan Redif on polynomial generalised eigenvalue decomposition (PGEVD) for convolutive broadband blind source separation, para-Hermitian polynomial matrices, non-stationary sources and broadband demixing.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="canonical"
+        href="https://soydanredif.github.io/pgevd-convolutive-bss.html">
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      max-width: 1050px;
+      margin: 42px auto;
+      padding: 0 24px;
+      line-height: 1.65;
+      color: #202124;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin-top: 38px;
+      font-size: 1.55rem;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .home-link {
+      margin-bottom: 24px;
+    }
+
+    .home-link a {
+      text-decoration: none;
+    }
+
+    figure {
+      margin: 36px 0;
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #d8d8d8;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    .equation {
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+      margin: 22px 0;
+      padding: 14px;
+      background: #f7f8fa;
+      border-left: 4px solid #3157c8;
+    }
+
+    .publication {
+      margin-bottom: 18px;
+    }
+
+    .note {
+      background: #f7f8fa;
+      padding: 18px 20px;
+      margin: 28px 0;
+      border-left: 4px solid #3157c8;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      font-size: 0.95rem;
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Polynomial GEVD for Convolutive Broadband Blind Source Separation",
+    "url": "https://soydanredif.github.io/pgevd-convolutive-bss.html",
+    "description": "Research overview of polynomial generalised eigenvalue decomposition for convolutive broadband blind source separation.",
+    "author": {
+      "@type": "Person",
+      "@id": "https://soydanredif.github.io/#soydan-redif",
+      "name": "Soydan Redif",
+      "url": "https://soydanredif.github.io/"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Polynomial generalised eigenvalue decomposition"
+      },
+      {
+        "@type": "Thing",
+        "name": "Convolutive blind source separation"
+      },
+      {
+        "@type": "Thing",
+        "name": "Polynomial matrix decomposition"
+      },
+      {
+        "@type": "Thing",
+        "name": "Broadband signal processing"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <div class="home-link">
+    <a href="index.html">&larr; Soydan Redif research home</a>
+  </div>
+
+  <h1>Polynomial GEVD for Convolutive Broadband Blind Source Separation</h1>
+
+  <p class="subtitle">
+    Polynomial generalised eigenvalue decomposition (PGEVD),
+    non-stationary broadband sources and polynomial-matrix demixing
+  </p>
+
+  <p>
+    My research on polynomial generalised eigenvalue decomposition
+    (PGEVD) extends the conventional generalised eigenvalue approach
+    from instantaneous, narrowband mixtures to polynomial matrices
+    representing convolutive broadband systems. The central application
+    considered here is blind source separation (BSS), where the objective
+    is to recover unknown source signals from observed mixtures without
+    prior knowledge of the mixing system.
+  </p>
+
+  <p>
+    In broadband problems the mixing process cannot in general be
+    represented by a single scalar or instantaneous matrix. Propagation,
+    reverberation and multipath effects introduce delays, so each
+    source-to-sensor path is more naturally represented by a finite
+    impulse response filter. Collecting these filters gives a polynomial
+    mixing matrix. Polynomial-matrix decompositions therefore provide
+    a natural framework for extending familiar narrowband matrix
+    techniques to convolutive multichannel signal processing.
+  </p>
+
+  <figure>
+    <img
+      src="soydan-redif-polynomial-gevd-convolutive-bss.png"
+      alt="Polynomial GEVD framework for convolutive broadband blind source separation by Soydan Redif">
+
+    <figcaption>
+      <strong>Polynomial GEVD for convolutive broadband blind source separation.</strong>
+      Non-stationary broadband sources undergo an unknown convolutive
+      polynomial mixing system. Cross-spectral-density matrices estimated
+      over different time intervals form a polynomial GEVD pair, from
+      which a broadband demixing system can be constructed.
+    </figcaption>
+  </figure>
+
+  <h2>Convolutive broadband blind source separation</h2>
+
+  <p>
+    Let the broadband source vector be represented by
+    <em>S(z)</em>, the observed sensor signals by <em>X(z)</em>,
+    and the unknown convolutive mixing system by the polynomial matrix
+    <em>A(z)</em>. The mixing model can be written conceptually as
+  </p>
+
+  <div class="equation">
+    X(z) = A(z) S(z).
+  </div>
+
+  <p>
+    Each entry of <em>A(z)</em> represents a source-to-sensor transfer
+    function. In the FIR case these entries are finite-order polynomials
+    in the delay variable. The aim of broadband BSS is to determine a
+    demixing polynomial matrix <em>F(z)</em> such that applying
+    <em>F(z)</em> to the observations produces estimates of the original
+    sources, subject to the usual scaling, filtering and permutation
+    ambiguities of blind separation.
+  </p>
+
+  <h2>Using source non-stationarity</h2>
+
+  <p>
+    A useful source of information is temporal non-stationarity. Suppose
+    the convolutive mixing system remains essentially unchanged while
+    the second-order statistics of the sources vary between two time
+    intervals. From the observed mixtures, two para-Hermitian polynomial
+    cross-spectral-density matrices can then be estimated:
+    <em>R<sub>x</sub><sup>(1)</sup>(z)</em> and
+    <em>R<sub>x</sub><sup>(2)</sup>(z)</em>.
+  </p>
+
+  <p>
+    The two matrices contain the same underlying mixing structure but
+    reflect different source powers or second-order source statistics.
+    This is the broadband analogue of the covariance-matrix pair used
+    by narrowband GEVD-based source-separation methods. The change in
+    source statistics provides information that can distinguish source
+    components even though the unknown mixing system itself remains
+    fixed.
+  </p>
+
+  <h2>Polynomial generalised eigenvalue decomposition</h2>
+
+  <p>
+    The polynomial GEVD seeks polynomial generalised eigenpairs that,
+    in conceptual form, satisfy
+  </p>
+
+  <div class="equation">
+    R<sub>x</sub><sup>(1)</sup>(z) v<sub>i</sub>(z)
+    =
+    &lambda;<sub>i</sub>(z)
+    R<sub>x</sub><sup>(2)</sup>(z) v<sub>i</sub>(z).
+  </div>
+
+  <p>
+    Unlike an ordinary GEVD, the matrices and eigenvectors are functions
+    of the delay variable. Polynomial eigenvalue decomposition (PEVD)
+    provides the broadband matrix-decomposition machinery needed to
+    construct such a generalisation. The resulting generalised
+    eigenvectors can be arranged to obtain a polynomial demixing system
+    whose rows act as broadband filters on the observed sensor signals.
+  </p>
+
+  <p>
+    This formulation is important because it avoids reducing the
+    broadband problem to a collection of unrelated narrowband frequency
+    bins. Instead, the convolutional structure is represented directly
+    in the polynomial domain. Para-Hermitian covariance or
+    cross-spectral-density matrices, paraunitary transformations and
+    polynomial eigenvalue decompositions therefore become central
+    objects in the broadband formulation.
+  </p>
+
+  <div class="note">
+    <strong>Practical interpretation.</strong>
+    Polynomial decompositions implemented with finite-order filters are
+    generally numerical approximations. Their performance depends on
+    factors including source-statistical contrast, finite data,
+    polynomial order, conditioning and the behaviour of eigenvalue
+    trajectories across frequency.
+  </div>
+
+  <h2>Development of the PGEVD/BSS work</h2>
+
+  <p>
+    In 2017 I proposed an extension of the GEVD to polynomial matrices
+    and applied it explicitly to convolutive blind signal separation
+    of non-stationary broadband sources. The method used two related
+    para-Hermitian polynomial matrices corresponding to different
+    signal time intervals. This established a direct polynomial-matrix
+    generalisation of GEVD-based narrowband BSS.
+  </p>
+
+  <p>
+    Subsequent work with Jennifer Pestana and Ian K. Proudler analysed
+    the conditions under which this broadband GEVD-based separation
+    approach can recover the sources. More broadly, polynomial matrix
+    decompositions and PEVD provide a framework for broadband subspace
+    processing, strong decorrelation, beamforming and other multichannel
+    problems in which ordinary narrowband matrix decompositions are
+    insufficient.
+  </p>
+
+  <h2>Selected publications</h2>
+
+  <div class="publication">
+    <strong>S. Redif (2017).</strong>
+    “Convolutive blind signal separation via polynomial matrix
+    generalised eigenvalue decomposition.”
+    <em>Electronics Letters</em>, 53, pp. 87–89.
+    DOI:
+    <a href="https://doi.org/10.1049/el.2016.3200">
+      10.1049/el.2016.3200
+    </a>
+  </div>
+
+  <div class="publication">
+    <strong>S. Redif, J. Pestana and I. K. Proudler (2019).</strong>
+    “Analysis of broadband GEVD-based blind source separation.”
+    <em>IEEE International Conference on Acoustics, Speech and Signal
+    Processing (ICASSP)</em>, pp. 8028–8032.
+    DOI:
+    <a href="https://doi.org/10.1109/ICASSP.2019.8683237">
+      10.1109/ICASSP.2019.8683237
+    </a>
+  </div>
+
+  <div class="publication">
+    <strong>S. Redif, S. Weiss and J. G. McWhirter (2017).</strong>
+    “Relevance of polynomial matrix decompositions to broadband blind
+    signal separation.”
+    <em>Signal Processing</em>, 134, pp. 76–86.
+    DOI:
+    <a href="https://doi.org/10.1016/j.sigpro.2016.11.019">
+      10.1016/j.sigpro.2016.11.019
+    </a>
+  </div>
+
+  <div class="publication">
+    <strong>V. W. Neo, S. Redif et al. (2023).</strong>
+    “Polynomial eigenvalue decomposition for multichannel broadband
+    signal processing: A mathematical technique offering new insights
+    and solutions.”
+    <em>IEEE Signal Processing Magazine</em>, 40(7), pp. 18–37.
+    DOI:
+    <a href="https://doi.org/10.1109/MSP.2023.3269200">
+      10.1109/MSP.2023.3269200
+    </a>
+  </div>
+
+  <footer>
+    <p>
+      <a href="index.html">&larr; Return to Soydan Redif research home</a>
+    </p>
+  </footer>
+
+</body>
+</html>
