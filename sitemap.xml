@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://soydanredif.github.io/</loc>
+
+    <image:image>
+      <image:loc>https://soydanredif.github.io/soydan-redif-polynomial-gevd-convolutive-bss.png</image:loc>
+      <image:title>Polynomial GEVD for Convolutive Broadband Blind Source Separation</image:title>
+      <image:caption>Original explanatory diagram by Soydan Redif illustrating polynomial generalised eigenvalue decomposition for convolutive broadband blind source separation.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://soydanredif.github.io/soydan-redif-smd-pevd-polynomial-matrix-decomposition.png</image:loc>
+      <image:title>Sequential Matrix Diagonalisation for Polynomial Eigenvalue Decomposition</image:title>
+      <image:caption>Original explanatory diagram by Soydan Redif illustrating Sequential Matrix Diagonalisation for polynomial eigenvalue decomposition of para-Hermitian matrices.</image:caption>
+    </image:image>
+
+    <image:image>
+      <image:loc>https://soydanredif.github.io/soydan-redif-polynomial-matrix-decompositions-paraunitary-filter-banks.png</image:loc>
+      <image:title>Polynomial Matrix Decompositions and Paraunitary Filter Banks</image:title>
+      <image:caption>Original explanatory diagram by Soydan Redif covering polynomial matrix decompositions, paraunitary filter banks and broadband multichannel signal processing.</image:caption>
+    </image:image>
+
+  </url>
+
+</urlset>
