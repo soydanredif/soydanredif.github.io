@@ -7,6 +7,10 @@
     <loc>https://soydanredif.github.io/</loc>
 
     <image:image>
+      <image:loc>https://soydanredif.github.io/soydan-redif-signal-processing-researcher.jpeg</image:loc>
+    </image:image>
+        
+    <image:image>
       <image:loc>https://soydanredif.github.io/soydan-redif-polynomial-gevd-convolutive-bss.png</image:loc>
     </image:image>
 
